@@ -20,7 +20,8 @@ function App() {
   }, []);
 
   const getData = async () => {
-    if (items.length < 120) {
+    if (items.length < 60) {
+      console.log("Fetching the data after", items.length);
       setTimeout(() => {
         setItems((prevItems) => [
           ...prevItems,
@@ -29,6 +30,7 @@ function App() {
         setHasMore(true);
       }, 1000);
     } else {
+      console.log("-----------No More Data to show----------");
       setHasMore(false);
     }
   };
@@ -43,6 +45,7 @@ function App() {
       >
         {items.map((value, index) => (
           <div
+            key={value + index}
             style={{
               height: "100px",
               fontSize: "20px",
